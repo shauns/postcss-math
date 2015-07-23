@@ -1,6 +1,14 @@
 sudo: false
 language: node_js
 node_js:
-  - iojs
-  - "0.12"
-  - "0.10"
+- iojs
+- '0.12'
+- '0.10'
+deploy:
+  provider: npm
+  email: shaun.stanworth@googlemail.com
+  api_key:
+    secure: e2qvXibk07j594l4d1J0+xtBUvEfmJkmIXdAi/1Npb4NcUTymx4Io6JF3r7BVqYFMAXGVJ/+1GK2iDvwsAX8UjjSOBwSCbQurvYm3XeXInUYSVWDpxIdoCAwHF4Tjk7v0W40db8p/O3yhm5i2rxYq2Kne7NiYTqCtTDbJITawIS1LIlpNnpd+wytnPiVlFCxJwWvyr3TVKx2uGdIN7HutdeCEU6vvCyqEkg5SBTr4N9lvFLsjfiEUt6T3zpwRgnjRRPHG+Ky6Wvuim3VvnaFEkVRQphAYDA/dDs2S11fjatzksBtwSdvpir30mmhMxNR3fWBhcYBvxM2XI1eROqYZi+ttJA0TKiyQRLQZYYRqtYtVIy49AU3DdsQ6UuZi39QkUJjk5RTyBIFkuZuLm9g9jxc3G/aepSo2JYyk6XSk0CXowjDbB8a1eBw3uPtiDqlLocHTCln3iEClpkIt2eji6CAxB76HlGw4QPXnrA6x7blgnRL2qIAUFDMWK1CDAR0oeiTQ9+xnLoeY0P2oyRcV3YbpDz1Jui1ZZSTft/PWkocew2QPH3jf75Tg+blpKWjkRkiTvCu3mqQiT3/u337zvY436JlHksA3IavKcThcjQlHbIEHDNCcinLB0D+ql6ud0yleDZ26VIOy8DPlemHBkzVoym6O2GaFJ3xT1MD+yY=
+  on:
+    tags: true
+    repo: shauns/postcss-math
