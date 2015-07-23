@@ -1,0 +1,37 @@
+{
+  "name": "postcss-math",
+  "version": "0.0.1",
+  "description": "PostCSS plugin for making calculations with math.js",
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "math.js",
+    "math"
+  ],
+  "author": "Shaun Stanworth <shaun@freeformers.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shauns/postcss-math.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shauns/postcss-math/issues"
+  },
+  "homepage": "https://github.com/shauns/postcss-math",
+  "dependencies": {
+    "mathjs": "^1.7.1",
+    "postcss": "^4.1.13",
+    "postcss-message-helpers": "^2.0.0",
+    "reduce-function-call": "^1.0.1"
+  },
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^0.14.0",
+    "gulp-mocha": "^2.1.2"
+  },
+  "scripts": {
+    "test": "gulp"
+  }
+}
