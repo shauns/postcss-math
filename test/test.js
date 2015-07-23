@@ -60,4 +60,13 @@ describe('postcss-math', function () {
         );
     });
 
+    it('supports simple exponentials', function(done) {
+        test(
+            'p{ font-size: resolve((4 ^ 2)px); }',
+            'p{ font-size: 16px; }',
+            {},
+            done
+        );
+    });
+
 });
