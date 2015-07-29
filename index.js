@@ -25,28 +25,30 @@ maths.import({
 });
 
 function transformResolve(value) {
-	return reduceFunctionCall(value, 'resolve', function(argString) {
+    return reduceFunctionCall(value, 'resolve', function(argString) {
 
-		var unit = '';
-		if (argString.indexOf('floor(') >= 0 || argString.indexOf('ceil(') >= 0) {
-			// drop unit to apply floor or ceil function
-			var start = argString.indexOf('(') + 1;
-			var end = argString.indexOf(')');
-			var numberWithUnit = argString.substring(start, end);
+        var unit = '';
+        if (argString.indexOf('floor(') >= 0
+                || argString.indexOf('ceil(') >= 0) {
+            // drop unit to apply floor or ceil function
+            var start = argString.indexOf('(') + 1;
+            var end = argString.indexOf(')');
+            var numberWithUnit = argString.substring(start, end);
 
-			number = numberWithUnit.replace(/([0-9\.]+)([a-zA-Z]+)$/, '$1');
-			unit = numberWithUnit.replace(/([0-9]|\.)+([a-zA-Z]+)$/, '$2');
+            var number = numberWithUnit.replace(/([0-9\.]+)([a-zA-Z]+)$/, '$1');
+            unit = numberWithUnit.replace(/([0-9]|\.)+([a-zA-Z]+)$/, '$2');
 
-			argString = argString.substring(0, start) + number + ')';
-		}
+            argString = argString.substring(0, start) + number + ')';
+        }
 
-		var res = maths.eval(argString);
-		var formatted = res.toString() + unit; // Add previous splitted unit if any
+        var res = maths.eval(argString);
+        // Add previous splitted unit if any
+        var formatted = res.toString() + unit;
 
-		// Math.JS puts a space between numbers and units, drop it.
-		formatted = formatted.replace(/(.+) ([a-zA-Z]+)$/, '$1$2');
-		return formatted;
-	});
+        // Math.JS puts a space between numbers and units, drop it.
+        formatted = formatted.replace(/(.+) ([a-zA-Z]+)$/, '$1$2');
+        return formatted;
+    });
 }
 
 module.exports = postcss.plugin('postcss-math', function (opts) {
