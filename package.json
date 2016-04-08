@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/shauns/postcss-math",
   "dependencies": {
-    "mathjs": "^1.7.1",
+    "mathjs": "^2.0.0",
     "postcss": "^4.1.13",
     "postcss-message-helpers": "^2.0.0",
     "reduce-function-call": "^1.0.1"

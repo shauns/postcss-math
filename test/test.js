@@ -69,4 +69,22 @@ describe('postcss-math', function () {
         );
     });
 
+    it('supports floor with unit', function(done) {
+        test(
+            'p{ font-size: resolve(floor(12.6px)); }',
+            'p{ font-size: 12px; }',
+            {},
+            done
+        );
+    });
+
+    it('supports ceil with unit', function(done) {
+        test(
+            'p{ font-size: resolve(ceil(12.6px)); }',
+            'p{ font-size: 13px; }',
+            {},
+            done
+        );
+    });
+
 });
