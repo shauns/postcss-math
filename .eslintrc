@@ -6,8 +6,9 @@
     "no-underscore-dangle": [
       0
     ],
-    "no-reserved-keys": [
-      2
+    "quote-props": [
+      2,
+      "as-needed"
     ],
     "no-multi-spaces": [
       0
