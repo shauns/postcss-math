@@ -6,11 +6,18 @@ var maths = require('mathjs');
 var PREFIXES = maths.type.Unit.PREFIXES;
 var BASE_UNITS = maths.type.Unit.BASE_UNITS;
 
-BASE_UNITS.PIXELS = {};
+BASE_UNITS.PIXELS = {
+    dimensions: [0, 1, 0, 0, 0, 0, 0, 0, 0],
+    key: 'PIXELS'
+};
 
 maths.type.Unit.UNITS.px = {
-    name: 'px', base: BASE_UNITS.PIXELS, prefixes: PREFIXES.NONE, value: 1,
-    offset: 0
+    name: 'px',
+    base: BASE_UNITS.PIXELS,
+    prefixes: PREFIXES.NONE,
+    value: 1,
+    offset: 0,
+    dimensions: [0, 1, 0, 0, 0, 0, 0, 0, 0]
 };
 
 maths.type.Unit.prototype.strip = function() {
