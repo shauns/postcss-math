@@ -1,9 +1,9 @@
 sudo: false
 language: node_js
 node_js:
-- iojs
-- '0.12'
-- '0.10'
+  - "5"
+  - "4"
+  - "0.12"
 deploy:
   provider: npm
   email: shaun.stanworth@googlemail.com

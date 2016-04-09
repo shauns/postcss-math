@@ -1,6 +1,6 @@
 {
   "name": "postcss-math",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "PostCSS plugin for making calculations with math.js",
   "keywords": [
     "postcss",
@@ -20,15 +20,15 @@
   },
   "homepage": "https://github.com/shauns/postcss-math",
   "dependencies": {
-    "mathjs": "^2.0.0",
-    "postcss": "^4.1.13",
+    "mathjs": "^3.1.4",
+    "postcss": "^5.0.19",
     "postcss-message-helpers": "^2.0.0",
     "reduce-function-call": "^1.0.1"
   },
   "devDependencies": {
     "chai": "^3.0.0",
     "gulp": "^3.9.0",
-    "gulp-eslint": "^0.14.0",
+    "gulp-eslint": "^2.0.0",
     "gulp-mocha": "^2.1.2"
   },
   "scripts": {
