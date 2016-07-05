@@ -58,11 +58,7 @@ function transformResolve(value) {
     });
 }
 
-module.exports = postcss.plugin('postcss-math', function (opts) {
-    opts = opts || {};
-
-    // Work with options here
-
+module.exports = postcss.plugin('postcss-math', function () {
     return function (css) {
 
         // Transform CSS AST here
