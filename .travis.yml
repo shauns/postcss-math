@@ -3,7 +3,6 @@ language: node_js
 node_js:
   - "5"
   - "4"
-  - "0.12"
 deploy:
   provider: npm
   email: shaun.stanworth@googlemail.com
