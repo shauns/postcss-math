@@ -62,13 +62,26 @@ module.exports = postcss.plugin('postcss-math', function () {
     return function (css) {
 
         // Transform CSS AST here
-        css.eachDecl(function (decl) {
-            if (!decl.value || decl.value.indexOf('resolve(') === -1) {
+        css.walk(function (node) {
+            var nodeProp;
+
+            if (node.type === 'decl') {
+                nodeProp = 'value';
+            }
+            else if (node.type === 'atrule' && node.name === 'media') {
+                nodeProp = 'params';
+            }
+            else {
                 return;
             }
-            decl.value = helpers.try(function () {
-                return transformResolve(decl.value);
-            }, decl.source);
-        });
+
+            if (!node[nodeProp] || node[nodeProp].indexOf('resolve(') === -1) {
+                return;
+            }
+
+            node[nodeProp] = helpers.try(function () {
+                return transformResolve(node[nodeProp]);
+            }, node.source);
+        })
     };
 });
