@@ -87,4 +87,13 @@ describe('postcss-math', function () {
         );
     });
 
+    it('supports media queries', function(done) {
+        test(
+            '@media (min-width: resolve(10px + 100px)), (max-width: resolve(10px + 200px)) {}',
+            '@media (min-width: 110px), (max-width: 210px) {}',
+            {},
+            done
+        );
+    });
+
 });
