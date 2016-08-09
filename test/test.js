@@ -97,4 +97,13 @@ describe('postcss-math', function () {
         );
     });
 
+    it('floors and resolves', function(done) {
+        test(
+            '.test { test: resolve( floor( 12 / 5 ) ); }',
+            '.test { test: 2; }',
+            {},
+            done
+        );
+    });
+
 });
