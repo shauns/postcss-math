@@ -42,9 +42,11 @@ function transformResolve(value) {
             var end = argString.indexOf(')');
             var numberWithUnit = argString.substring(start, end);
 
-            var number = numberWithUnit.replace(/([0-9\.]+)([a-zA-Z]+)$/, '$1');
-            unit = numberWithUnit.replace(/([0-9]|\.)+([a-zA-Z]+)$/, '$2');
 
+            var number = numberWithUnit.replace(
+                /([^a-zA-Z]+)([a-zA-Z]*)$/, '$1'
+            );
+            unit = numberWithUnit.replace(/([^a-zA-Z]+)([a-zA-Z]*)$/, '$2');
             argString = argString.substring(0, start) + number + ')';
         }
 
