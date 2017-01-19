@@ -6,19 +6,36 @@ var maths = require('mathjs');
 var PREFIXES = maths.type.Unit.PREFIXES;
 var BASE_UNITS = maths.type.Unit.BASE_UNITS;
 
-BASE_UNITS.PIXELS = {
-    dimensions: [0, 1, 0, 0, 0, 0, 0, 0, 0],
-    key: 'PIXELS'
+var cssUnits = {
+    PIXELS: 'px',
+    EM: 'em',
+    EX: 'ex',
+    CH: 'ch',
+    REM: 'rem',
+    POINTS: 'pt',
+    VH: 'vh',
+    VW: 'vw',
+    VMIN: 'vmin',
+    VMAX: 'vmax'
 };
 
-maths.type.Unit.UNITS.px = {
-    name: 'px',
-    base: BASE_UNITS.PIXELS,
-    prefixes: PREFIXES.NONE,
-    value: 1,
-    offset: 0,
-    dimensions: [0, 1, 0, 0, 0, 0, 0, 0, 0]
-};
+Object.keys(cssUnits).forEach(function (unitKey) {
+    BASE_UNITS[unitKey] = {
+        dimensions: [0, 1, 0, 0, 0, 0, 0, 0, 0],
+        key: unitKey
+    };
+
+    var unit = cssUnits[unitKey];
+
+    maths.type.Unit.UNITS[unit] = {
+        name: unit,
+        base: BASE_UNITS[unitKey],
+        prefixes: PREFIXES.NONE,
+        value: 1,
+        offset: 0,
+        dimensions: BASE_UNITS[unitKey].dimensions
+    };
+});
 
 maths.type.Unit.prototype.strip = function() {
     return this._denormalize(this.value);

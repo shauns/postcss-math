@@ -12,9 +12,10 @@
 This plug-in supports:
 
 * Plain-old maths, as per math.js built-in functionality
-* `px` units
+* `px`, `em`, `rem`, `vh`, `vmax` and other units
 * CSS-friendly rendering (`10cm` not `10 cm`)
 * Unit stripping e.g. `strip(25px)` becomes `25`
+* Unit math operations e.g. `floor(12.6px)` becomes `12px` and `ceil(12.6px)` becomes `13px`
 
 Contributions are very welcome!
 
