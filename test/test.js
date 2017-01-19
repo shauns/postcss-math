@@ -60,6 +60,15 @@ describe('postcss-math', function () {
         );
     });
 
+    it('supports common css units', function(done) {
+        test(
+            'p{ font-size: resolve(1rem * strip(2em)); }',
+            'p{ font-size: 2rem; }',
+            {},
+            done
+        );
+    });
+
     it('supports simple exponentials', function(done) {
         test(
             'p{ font-size: resolve((4 ^ 2)px); }',
