@@ -115,4 +115,14 @@ describe('postcss-math', function () {
         );
     });
 
+    it('resolves in nth-child', function(done) {
+        test(
+            '.x:nth-child(resolve(2 + 2)n), ' +
+            '.y:nth-child(resolve(3)n) { test: 2; }',
+            '.x:nth-child(4n), .y:nth-child(3n) { test: 2; }',
+            {},
+            done
+        )
+    });
+
 });
