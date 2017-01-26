@@ -90,6 +90,9 @@ module.exports = postcss.plugin('postcss-math', function () {
             else if (node.type === 'atrule' && node.name === 'media') {
                 nodeProp = 'params';
             }
+            else if (node.type === 'rule') {
+                nodeProp = 'selector';
+            }
             else {
                 return;
             }
