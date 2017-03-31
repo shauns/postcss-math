@@ -44,6 +44,10 @@ postcss([ require('postcss-math') ])
 
 See [PostCSS] docs for examples for your environment.
 
+## Using `postcss-assets`?
+
+You can pass in a `functionName` option to switch to something other than `resolve`.
+
 ## How does this differ to `postcss-calc`?
 
 They're (deliberately) trying to work towards the calc(...) standard, so for 

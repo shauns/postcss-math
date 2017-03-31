@@ -48,8 +48,8 @@ maths.import({
     strip: strip
 });
 
-function transformResolve(value) {
-    return reduceFunctionCall(value, 'resolve', function(argString) {
+function transformResolve(value, functionName) {
+    return reduceFunctionCall(value, functionName, function(argString) {
 
         var unit = '';
         if (argString.indexOf('floor(') >= 0
@@ -77,7 +77,14 @@ function transformResolve(value) {
     });
 }
 
-module.exports = postcss.plugin('postcss-math', function () {
+module.exports = postcss.plugin('postcss-math', function (opts) {
+    opts = opts || {};
+
+    var functionName = 'resolve';
+    if (opts.functionName) {
+        functionName = opts.functionName
+    }
+
     return function (css) {
 
         // Transform CSS AST here
@@ -97,12 +104,13 @@ module.exports = postcss.plugin('postcss-math', function () {
                 return;
             }
 
-            if (!node[nodeProp] || node[nodeProp].indexOf('resolve(') === -1) {
+            var match = functionName + '(';
+            if (!node[nodeProp] || node[nodeProp].indexOf(match) === -1) {
                 return;
             }
 
             node[nodeProp] = helpers.try(function () {
-                return transformResolve(node[nodeProp]);
+                return transformResolve(node[nodeProp], functionName);
             }, node.source);
         })
     };

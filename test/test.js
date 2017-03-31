@@ -24,6 +24,15 @@ describe('postcss-math', function () {
         );
     });
 
+    it('customised function name', function (done) {
+        test(
+            'p{ foo: calculate(2 * (3 + 5))px; }',
+            'p{ foo: 16px; }',
+            { functionName: 'calculate' },
+            done
+        );
+    });
+
     it('recursive resolve', function(done) {
         test(
             'p{ foo: resolve(2 * resolve(3 + 5)); }',
