@@ -24,6 +24,19 @@ describe('postcss-math', function () {
         );
     });
 
+    it('resolve with multiline arguments', function (done) {
+        test(
+            'p{ foo: resolve(\
+              1 +\
+              2\
+              + 3\
+            )px; }',
+            'p{ foo: 6px; }',
+            {},
+            done
+        );
+    });
+
     it('customised function name', function (done) {
         test(
             'p{ foo: calculate(2 * (3 + 5))px; }',
