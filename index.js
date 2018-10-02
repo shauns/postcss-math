@@ -51,14 +51,16 @@ maths.import({
 function transformResolve(value, functionName) {
     return reduceFunctionCall(value, functionName, function(argString) {
 
+        // Remove linebreaks to prevent brackets in output
+        argString = argString.replace(/(\r\n|\n|\r)/gm, ' ');
+
         var unit = '';
         if (argString.indexOf('floor(') >= 0
                 || argString.indexOf('ceil(') >= 0) {
-            // drop unit to apply floor or ceil function
+            // Drop unit to apply floor or ceil function
             var start = argString.indexOf('(') + 1;
             var end = argString.indexOf(')');
             var numberWithUnit = argString.substring(start, end);
-
 
             var number = numberWithUnit.replace(
                 /([^a-zA-Z]+)([a-zA-Z]*)$/, '$1'
